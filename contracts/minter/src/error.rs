@@ -1,4 +1,5 @@
 use cosmwasm_std::StdError;
+use cw_ownable::OwnershipError;
 use cw_utils::PaymentError;
 use thiserror::Error;
 
@@ -19,4 +20,7 @@ pub enum ContractError {
 
     #[error("{0}")]
     Payment(#[from] PaymentError),
+
+    #[error("{0}")]
+    Ownership(#[from] OwnershipError),
 }

@@ -49,7 +49,17 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> Result<Response, ContractError> {
     match msg {
-        ExecuteMsg::Mint {} => fish(deps, env, info),
+        ExecuteMsg::Fish {} => fish(deps, env, info),
+        
+        ExecuteMsg::UpdateOwnership(action) => {
+            cw_ownable::update_ownership(
+                deps, 
+                &env.block, 
+                &info.sender, 
+                action
+            )?;
+            Ok(Response::default())
+        }
     }
 }
 
@@ -121,6 +131,10 @@ pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
         QueryMsg::Collection {} => to_json_binary(&CollectionResponse { 
             address: COLLECTION.load(deps.storage)?.to_string() 
         }),
+
+        QueryMsg::Ownership {} => to_json_binary(
+            &cw_ownable::get_ownership(deps.storage)?
+        )
     }
 }
 
