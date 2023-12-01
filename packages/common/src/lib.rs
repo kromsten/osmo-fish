@@ -4,6 +4,7 @@ use cosmwasm_schema::cw_serde;
 pub struct MintData {
     pub name: String,
     pub image: String,
+    pub rarity: Option<u8>,
 }
 
 impl From<cw721_metadata_onchain::Extension> for MintData {
@@ -12,6 +13,7 @@ impl From<cw721_metadata_onchain::Extension> for MintData {
         Self {
             name: ext.name.unwrap(),
             image: ext.image.unwrap(),
+            rarity: None,
         }
     }
 }
