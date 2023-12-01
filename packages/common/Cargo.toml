@@ -1,0 +1,17 @@
+[package]
+name = "fish_common"
+version = { workspace = true }
+edition = { workspace = true }
+authors = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+cosmwasm-std            = { workspace = true }
+cosmwasm-schema         = { workspace = true }
+schemars                = { workspace = true }
+serde                   = { workspace = true }
+thiserror               = { workspace = true }
+cw721-metadata-onchain  = { workspace = true }
+

@@ -1,14 +1,11 @@
 [workspace]
-members = ["contracts/*"]
+members = ["contracts/*", "packages/*"]
 
 [workspace.package]
-version       = "0.18.0"
-edition       = "2021"
-license       = "Apache-2.0"
-repository    = "https://github.com/CosmWasm/cw-nfts"
-homepage      = "https://cosmwasm.com"
-documentation = "https://docs.cosmwasm.com"
-rust-version  = "1.65"
+version = "0.1.0"
+edition = "2021"
+authors = ["Kromsten <kromsten@pm.me>"]
+
 
 [workspace.dependencies]
 cosmwasm-schema         = "1.2.1"
@@ -24,8 +21,10 @@ cw721-base              = "0.18.0"
 cw721-metadata-onchain  = "0.15.0"
 
 schemars                = "0.8.11"
-serde                   = { version = "1.0.152", default-features = false, features = ["derive"] }
 thiserror               = "1.0.38"
+serde                   = { version = "1.0.152", default-features = false, features = ["derive"] }
+
+fish_common             = { path = "packages/common" }
 
 
 
